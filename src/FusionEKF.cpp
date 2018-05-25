@@ -151,6 +151,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     // Radar updates
     ekf_.R_ = R_radar_;
     ekf_.H_ = Hj_;
+    // Check to see if we are near y=0, only update if we are not
     if (ekf_.x_(1)*ekf_.x_(1) > 0.004) {
         ekf_.UpdateEKF(measurement_pack.raw_measurements_);
     }
